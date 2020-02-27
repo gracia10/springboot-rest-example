@@ -16,6 +16,9 @@ spring:
       enabled: true
   thymeleaf:
       cache: false
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false
 
 server:
   port: 8081
