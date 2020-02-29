@@ -36,8 +36,8 @@ subprojects {
 
     dependencies {
 		implementation 'org.springframework.data:spring-data-rest-hal-browser'
-//		implementation 'org.springframework.boot:spring-boot-starter-security'
-//		implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+		implementation 'org.springframework.boot:spring-boot-starter-security'
+		implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 		

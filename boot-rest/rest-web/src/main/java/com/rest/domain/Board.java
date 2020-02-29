@@ -50,7 +50,7 @@ public class Board implements Serializable{
     @Column
     private LocalDateTime updatedDate;
 
-    @OneToOne(fetch= FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
     @Builder
@@ -62,6 +62,10 @@ public class Board implements Serializable{
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.user = user;
+    }
+    
+    public void setCreatedDateNow() {
+        this.createdDate = LocalDateTime.now();
     }
 
 }
