@@ -12,12 +12,14 @@ import org.springframework.hateoas.PagedModel.PageMetadata;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rest.domain.Board;
@@ -40,18 +42,30 @@ public class BoardRestController {
     	resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable)).withSelfRel());
         return ResponseEntity.ok(resources);
     }
+
+//    @GetMapping(value = "/{id}")
+//    public Foo findById(@PathVariable("id") Long id) {
+//        return RestPreconditions.checkFound(service.findById(id));
+//    }
     
     @PostMapping
-    public ResponseEntity<?> postBoard(@RequestBody Board board){
+    @ResponseStatus(HttpStatus.CREATED)
+    public void postBoard(@RequestBody Board board){
     	board.setCreatedDateNow();
     	boardRepository.save(board);
-    	return new ResponseEntity<>("{}",HttpStatus.CREATED);
     }
     
     @PutMapping("/{idx}")
-    public ResponseEntity<?> putBoard(@PathVariable Long idx,@RequestBody Board board){
-    	Board persisBoard = boardRepository.getOne(idx);
-    	return null;
+    @ResponseStatus(HttpStatus.OK)
+    public void putBoard(@PathVariable Long idx,@RequestBody Board board){
+    	board.update(idx);
+    	boardRepository.save(board);
+    }
+    
+    @DeleteMapping("/{idx}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteBoard(@PathVariable Long idx){
+    	boardRepository.deleteById(idx);
     }
 	
 }

@@ -7,10 +7,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-  h2:
-    console:
-      enabled: false
-      path: /console
   devtools:
     livereload:
       enabled: true

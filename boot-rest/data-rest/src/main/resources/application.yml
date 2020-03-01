@@ -4,13 +4,14 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  data:
+    rest:
+      base-path: /api
+      default-page-size: 10
+      max-page-size: 10
   jpa:
     hibernate:
       ddl-auto: create
-  h2:
-    console:
-      enabled: false
-      path: /console
   devtools:
     livereload:
       enabled: true
