@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest.domain.Board;
 import com.rest.repository.BoardRepository;
 
-@RestController
-@RequestMapping("/api/boards")
+//@RestController
+//@RequestMapping("/api/boards")
 public class BoardRestController {
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class BoardRestController {
     public ResponseEntity<?> getBoards(@PageableDefault Pageable pageable) {
         
     	Page<Board> boards = boardRepository.findAll(pageable);
-    	PageMetadata pageMetadata = new PageMetadata(pageable.getPageSize(),boards.getNumber(),boards.getTotalElements());
+    	PageMetadata pageMetadata = new PageMetadata(boards.getSize(), boards.getNumber(), boards.getTotalElements());
     	PagedModel<Board> resources = new PagedModel<Board>(boards.getContent(), pageMetadata);
     	resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable)).withSelfRel());
         return ResponseEntity.ok(resources);

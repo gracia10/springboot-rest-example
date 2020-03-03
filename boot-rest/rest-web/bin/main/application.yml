@@ -17,4 +17,4 @@ spring:
 #      fail-on-empty-beans: false
 
 server:
-  port: 8081
+  port: 8080
