@@ -2,8 +2,8 @@ package com.rest.domain.enums;
 
 public enum BoardType {
 	
-	notice("°øÁö°Ô½ÃÆÇ"),
-	free("ÀÚÀ¯°Ô½ÃÆÇ");
+	notice("ê³µì§€ê²Œì‹œíŒ"),
+	free("ììœ ê²Œì‹œíŒ");
 	
 	private String value;
 	

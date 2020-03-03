@@ -63,4 +63,12 @@ public class Board {
         this.user = user;
     }
 	
+    public void setCreatedDateNow() {
+        this.createdDate = LocalDateTime.now();
+    }
+    
+    public void update(Long idx) {
+        this.idx = idx;
+        this.updatedDate = LocalDateTime.now();
+    }
 }
