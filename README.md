@@ -16,3 +16,6 @@ https://docs.spring.io/spring-data/rest/docs/current/reference/html/#reference
 
 [3.3]  
 https://docs.spring.io/spring-data/rest/docs/current/reference/html/#spring-data-examples
+
+[3.4]
+https://github.com/spring-projects/spring-data-examples/tree/master/rest
