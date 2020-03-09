@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.rest.domain.Board;
 import com.rest.domain.User;
@@ -20,7 +21,7 @@ public class RestWebApplication {
 		SpringApplication.run(RestWebApplication.class, args);
 	}
 
-//	@Bean
+	@Bean
 	public CommandLineRunner runner(UserRepository userRepository, BoardRepository boardRepository) {
 		return (args)->{
 			User user = userRepository.save(User.builder()
