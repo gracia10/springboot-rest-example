@@ -79,6 +79,9 @@
     			type: "POST",
     			data: jsonData,
     			contentType: "application/json",
+    			headers: {
+    				"Authorization": "Basic" + btoa("havi"+":"+"test")
+    			},
     			success: function(){
     				alert("저장성공!");
     				location.href='/board/list';

@@ -1,4 +1,4 @@
-buildscript {
+srewerbuildscript {
     ext {
         springBootVersion = '2.2.4.RELEASE'
     }
@@ -68,5 +68,11 @@ project(':rest-web') {
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    }
+}
+
+project(':spring-rest-samples') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     }
 }
