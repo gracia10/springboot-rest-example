@@ -19,3 +19,6 @@ https://docs.spring.io/spring-data/rest/docs/current/reference/html/#spring-data
 
 [3.4]
 https://github.com/spring-projects/spring-data-examples/tree/master/rest
+
+[3.11]
+https://www.baeldung.com/spring-security-expressions
