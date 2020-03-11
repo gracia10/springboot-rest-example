@@ -1,4 +1,4 @@
-srewerbuildscript {
+buildscript {
     ext {
         springBootVersion = '2.2.4.RELEASE'
     }
@@ -35,11 +35,11 @@ subprojects {
     }
 
     dependencies {
-		implementation 'org.springframework.data:spring-data-rest-hal-browser'
 		implementation 'org.springframework.boot:spring-boot-starter-security'
 		implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+		implementation 'org.springframework.data:spring-data-rest-hal-browser'
 		
 		runtimeOnly 'mysql:mysql-connector-java'
 
@@ -73,6 +73,6 @@ project(':rest-web') {
 
 project(':spring-rest-samples') {
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    	implementation 'org.springframework.boot:spring-boot-starter-web'
     }
 }

@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest.domain.Board;
 import com.rest.repository.BoardRepository;
 
-//@RestController
-//@RequestMapping("/api/boards")
+@RestController
+@RequestMapping("/api/boards")
 public class BoardRestController {
 	
 	@Autowired
