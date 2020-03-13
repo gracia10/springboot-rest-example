@@ -26,7 +26,6 @@ public class BoardRestController {
     @GetMapping("/boards")
     public @ResponseBody CollectionModel<Board> simpleBoard(@PageableDefault Pageable pageable) {
     	Page<Board> boardList = boardRepository.findAll(pageable);
-    	
     	PageMetadata pageMetadata = new PageMetadata(boardList.getSize(), boardList.getNumber(), boardList.getTotalElements());
     	PagedModel<Board> resources = new PagedModel<Board>(boardList.getContent(), pageMetadata);
     	resources.add(linkTo(methodOn(BoardRestController.class).simpleBoard(pageable)).withSelfRel());

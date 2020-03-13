@@ -43,11 +43,6 @@ public class BoardRestController {
         return ResponseEntity.ok(resources);
     }
 
-//    @GetMapping(value = "/{id}")
-//    public Foo findById(@PathVariable("id") Long id) {
-//        return RestPreconditions.checkFound(service.findById(id));
-//    }
-    
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void postBoard(@RequestBody Board board){

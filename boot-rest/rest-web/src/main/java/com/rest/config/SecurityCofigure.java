@@ -43,7 +43,6 @@ public class SecurityCofigure extends WebSecurityConfigurerAdapter{
 		
 		http.httpBasic()
 			.and().authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/Boards/**").hasRole("ADMIN")
 			.anyRequest().permitAll()
 			.and().cors().configurationSource(source)
 			.and().csrf().disable();

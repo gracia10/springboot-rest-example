@@ -11,6 +11,6 @@ import com.rest.domain.projection.BoardOnlyContainTitle;
 public interface BoardRepository extends JpaRepository<Board, Long>{
 	
 	@Override
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	<S extends Board> S save(S entity);
 }

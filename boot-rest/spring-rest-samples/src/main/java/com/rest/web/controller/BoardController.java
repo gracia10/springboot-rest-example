@@ -3,13 +3,17 @@ package com.rest.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rest.web.domain.User;
 import com.rest.web.service.BoardService;
 
 @Controller
@@ -22,11 +26,13 @@ public class BoardController {
 	@GetMapping({"","/"})
 	public String board(@RequestParam(value="idx", defaultValue="0") Long idx, Model model){
 		model.addAttribute("board", boardService.findBoardByIdx(idx));
+		
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return "/board/form";
 	}
 	
-    @GetMapping("/list")
-    public String list(@PageableDefault Pageable pageable, User user, Model model) {
+    @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
+    public String list(@PageableDefault Pageable pageable,@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("boardList", boardService.findBoardList(pageable));
         return "/board/list";
     }

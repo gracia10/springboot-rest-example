@@ -24,7 +24,7 @@ public class SecurityCofigure extends WebSecurityConfigurerAdapter{
 	
 	@Bean
 	InMemoryUserDetailsManager userDetailsManager() {
-		User.UserBuilder commonUser = User.withUsername("user").password("{noop}common").roles("USER");
+		User.UserBuilder commonUser = User.withUsername("commonUser").password("{noop}common").roles("USER");
 		User.UserBuilder admin = User.withUsername("havi").password("{noop}test").roles("USER", "ADMIN");
 
 		List<UserDetails> userDetailsList = new ArrayList<>();
@@ -45,7 +45,7 @@ public class SecurityCofigure extends WebSecurityConfigurerAdapter{
 		
 		http.httpBasic()
 			.and().authorizeRequests()
-			//.antMatchers(HttpMethod.POST, "/Boards/**").hasRole("ADMIN")
+			//.antMatchers(HttpMethod.POST, "/api/boards/**").hasRole("ADMIN")
 			.anyRequest().permitAll()
 			.and().cors().configurationSource(source)
 			.and().csrf().disable();
