@@ -24,32 +24,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		CharacterEncodingFilter filter = new CharacterEncodingFilter();
 		
         http
-	        	.authorizeRequests()
-	        	.antMatchers("/", "/login/**", "/css/**", "/images/**", "/js/**", "/console/**").permitAll()
-	        	.anyRequest().authenticated()
+        	.authorizeRequests()
+        	.antMatchers("/", "/home", "/login/**", "/css/**", "/images/**", "/js/**","/favicon.ico").permitAll()
+        	.anyRequest().authenticated()
             .and()
-            	.formLogin()
-            		.successForwardUrl("/board/list")
+            .formLogin()
+            		.defaultSuccessUrl("/board/list")
             .and()
-            	.logout()
+            .logout()
             		.logoutUrl("/logout")
             		.logoutSuccessUrl("/login")
             		.deleteCookies("JSESSIONID")
             		.invalidateHttpSession(true)
             .and()
+            .addFilterBefore(filter, CsrfFilter.class)
             .csrf().disable();
 	}
-
+	
 	@Bean
 	InMemoryUserDetailsManager userDetailsManager() {
 		User.UserBuilder commonUser = User.withUsername("commonUser").password("{noop}common").roles("USER");
-		User.UserBuilder havi = User.withUsername("havi").password("{noop}test").roles("USER", "ADMIN");
+		User.UserBuilder admin = User.withUsername("havi").password("{noop}test").roles("USER", "ADMIN");
 
 		List<UserDetails> userDetailsList = new ArrayList<>();
 		userDetailsList.add(commonUser.build());
-		userDetailsList.add(havi.build());
+		userDetailsList.add(admin.build());
 
 		return new InMemoryUserDetailsManager(userDetailsList);
 	}
-
 }

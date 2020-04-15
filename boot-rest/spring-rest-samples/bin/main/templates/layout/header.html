@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:th="http://www.thymeleaf.org">
 <!--header-->
 <div th:fragment="header">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -13,14 +13,16 @@
                 </button>
                 <a href="/" class="navbar-brand" style="text-decoration:none;">
                     <img th:src="@{/images/spring_boot_gray.png}" class="img-rounded" style="display:inline-block;height:100%;margin-right:5px" />
-                    <span style="vertical-align:middle;">SpringBoot Community Web</span>
+                    <span style="vertical-align:middle;">
+                    	SpringBoot Example
+                    </span>
                 </a>
+                
             </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/logout">LOGOUT</a>
+						<a href="/logout">LOGOUT</a>
                     </li>
                 </ul>
             </div>

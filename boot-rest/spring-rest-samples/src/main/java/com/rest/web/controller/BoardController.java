@@ -3,8 +3,6 @@ package com.rest.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -32,7 +30,7 @@ public class BoardController {
 	}
 	
     @RequestMapping(value = "/list", method = {RequestMethod.GET,RequestMethod.POST})
-    public String list(@PageableDefault Pageable pageable,@AuthenticationPrincipal User user, Model model) {
+    public String list(@PageableDefault Pageable pageable, Model model) {
         model.addAttribute("boardList", boardService.findBoardList(pageable));
         return "/board/list";
     }

@@ -11,3 +11,9 @@ spring:
       max-page-size: 10
 server:
   port: 8081
+
+  
+logging:
+  level:
+    root: debug
+  
